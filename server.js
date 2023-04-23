@@ -9,9 +9,9 @@ let db = pgp("sql://account:username@localhost:port/database_name");
 
 app.use(cors());
 
-app.use('/api/uid', express.json(), (req, res) => {
-    const askinguid = req.body.curuid;
-    db.any("SELECT t2.\"UID\", t2.\"Status\", t2.\"Date\", t3.\"Note\" FROM table_1", [askinguid])
+app.use('/api/id', express.json(), (req, res) => {
+    const uid = req.body.uid;
+    db.any("SELECT t2.\"UID\", t2.\"Name\" FROM table_1", [uid])
     .then(function (result) {
         res.send(result);
     })
