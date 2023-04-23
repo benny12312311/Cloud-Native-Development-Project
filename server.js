@@ -11,7 +11,7 @@ app.use(cors());
 
 app.use('/api/id', express.json(), (req, res) => {
     const uid = req.body.uid;
-    db.any("SELECT t2.\"UID\", t2.\"Name\" FROM table_1", [uid])
+    db.any("SELECT \"UID\", \"Name\" FROM table_1", [uid])
     .then(function (result) {
         res.send(result);
     })
